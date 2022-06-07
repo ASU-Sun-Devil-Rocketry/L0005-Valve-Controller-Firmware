@@ -30,6 +30,7 @@ extern "C" {
 // L0005 Microcontroller Pin Assignments
 #define STATUS GPIO_PIN_15
 #define EXCEPT GPIO_PIN_13
+#define SOL1   GPIO_PIN_2
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);

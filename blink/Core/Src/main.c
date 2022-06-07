@@ -47,7 +47,7 @@ int main(void)
   while (1)
   {
       // Blink LED
-      HAL_GPIO_TogglePin(GPIOA, STATUS);
+      HAL_GPIO_TogglePin(GPIOE, SOL1);
       HAL_Delay(1000);
   }
 }
@@ -147,9 +147,11 @@ static void GPIO_Init(void)
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOE_CLK_ENABLE();
 
   /*Configure STATUS GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, STATUS, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOE, SOL1, GPIO_PIN_RESET);
 
   /*Configure STATUS GPIO pin : PA15 */
   GPIO_InitStruct.Pin = STATUS;
@@ -157,6 +159,13 @@ static void GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure SOL1 GPIO pin : PE2 */
+  GPIO_InitStruct.Pin = SOL1;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
 }
 
